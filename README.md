@@ -21,5 +21,3 @@ make test
 ```bash
 make test-in-docker
 ```
-
-
