@@ -2,13 +2,12 @@ FROM python:3.6.6
 
 RUN python -m pip install pip --upgrade
 
-COPY setup.py /job/
-COPY requirements.txt /job/
-COPY src/ /job/src/
-COPY test/ /job/test/
-
-WORKDIR job/
+COPY setup.py /executor/
+COPY requirements.txt /executor/
+COPY src/ /executor/src/
 
 RUN find . | grep -E "(__pycache__|\.pyc$)" | xargs rm -rf
-RUN pip install -U -r requirements.txt
-RUN pip install .
+RUN mkdir executor/resources
+RUN pip install -U -r executor/requirements.txt
+RUN pip install executor/.
+RUN echo "alias run='python executor/src/executor/main.py'" >> ~/.bashrc

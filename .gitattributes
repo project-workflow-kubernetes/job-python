@@ -1,3 +1,0 @@
-resources/*.pkl filter=lfs diff=lfs merge=lfs -text
-resources/*.csv filter=lfs diff=lfs merge=lfs -text
-resources/*.txt filter=lfs diff=lfs merge=lfs -text
