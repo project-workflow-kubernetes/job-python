@@ -1,4 +1,4 @@
-FROM liabifano/executor
+FROM python:3.6.6
 
 COPY setup.py /executor/
 COPY requirements.txt /executor/
