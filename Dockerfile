@@ -1,6 +1,4 @@
-FROM python:3.6.6
-
-RUN python -m pip install pip --upgrade
+FROM liabifano/executor
 
 COPY setup.py /executor/
 COPY requirements.txt /executor/
