@@ -1,3 +1,7 @@
+REMOTE_REPO=liabifano
+DOCKER_NAME=job
+DOCKER_LABEL=latest
+GIT_MASTER_HEAD_SHA:=$(shell git rev-parse --short=7 --verify HEAD)
 PROJECT_NAME=job
 TEST_PATH=./
 
@@ -14,6 +18,19 @@ help:
 	@echo "split - generates y_train.csv, X_train.csv, y_val, X_val"
 	@echo "train - generates trained_model.pkl"
 	@echo "score-test - generates score_test.csv"
+	@echo "build - build docker image"
+
+
+build:
+	@docker build -t ${REMOTE_REPO}/${DOCKER_NAME}:${DOCKER_LABEL} .
+	@docker run ${REMOTE_REPO}/${DOCKER_NAME}:${DOCKER_LABEL} /bin/bash -c "cd executor; py.test --verbose --color=yes"
+
+
+push:
+	@docker tag ${REMOTE_REPO}/${DOCKER_NAME}:${DOCKER_LABEL} ${REMOTE_REPO}/${DOCKER_NAME}:${GIT_MASTER_HEAD_SHA}
+	@echo "${DOCKER_PASSWORD}" | docker login -u="${DOCKER_USERNAME}" --password-stdin
+	@docker push ${REMOTE_REPO}/${DOCKER_NAME}:${GIT_MASTER_HEAD_SHA}
+
 
 
 test: clean-pyc
@@ -87,3 +104,5 @@ score-test: train resources/clean_test.csv resources/trained_model.pkl
 	bash -c "source activate $(PROJECT_NAME)"
 	@echo "\n--- Running main.py file ---\n"
 	python src/$(PROJECT_NAME)/score_test.py
+
+
