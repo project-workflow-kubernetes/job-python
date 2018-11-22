@@ -9,7 +9,6 @@ python:
 git:
   depth: false
 script:
-- echo "building images"
 - make build
 - make push
 deploy:
