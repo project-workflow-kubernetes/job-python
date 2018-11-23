@@ -19,11 +19,12 @@ help:
 	@echo "train - generates trained_model.pkl"
 	@echo "score-test - generates score_test.csv"
 	@echo "build - build docker image"
+	@echo "push - push image to remote repository"
 
 
 build:
-	@docker build -t ${REMOTE_REPO}/${DOCKER_NAME}:${DOCKER_LABEL} .
-	@docker run ${REMOTE_REPO}/${DOCKER_NAME}:${DOCKER_LABEL} /bin/bash -c "cd ${JOB}; py.test --verbose --color=yes"
+	@docker build --no-cache -t ${REMOTE_REPO}/${DOCKER_NAME}:${DOCKER_LABEL} .
+	@docker run ${REMOTE_REPO}/${DOCKER_NAME}:${DOCKER_LABEL} /bin/bash -c "cd job; py.test --verbose --color=yes"
 
 
 push:
@@ -103,6 +104,6 @@ score-test: train resources/clean_test.csv resources/trained_model.pkl
 	@echo "\n--- If the env $(PROJECT_NAME) doesn't exist, run 'make install' before ---\n"
 	bash -c "source activate $(PROJECT_NAME)"
 	@echo "\n--- Running main.py file ---\n"
-	python src/$(PROJECT_NAME)/score_test.py
+	python src/$(PROJECT_NAME)/score.py
 
 

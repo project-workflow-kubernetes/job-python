@@ -29,7 +29,7 @@ train.py:
   - trained_model.pkl
   image: job:latest
   command: python src/job/train.py
-score_test.py:
+score.py:
   inputs:
   - trained_model.pkl
   - clean_test.csv
