@@ -2,16 +2,13 @@
 preprocessing.py:
   inputs:
   - train.csv
-  - test.csv
   outputs:
   - clean_train.csv
-  - clean_test.csv
   image: job:latest
   command: python src/job/preprocessing.py
 split.py:
   inputs:
   - clean_train.csv
-  - clean_test.csv
   outputs:
   - X_train.csv
   - y_train.csv
@@ -32,8 +29,8 @@ train.py:
 score.py:
   inputs:
   - trained_model.pkl
-  - clean_test.csv
+  - test.csv
   outputs:
   - scored_test.csv
   image: job:latest
-  command: python src/job/score_test.py
+  command: python src/job/score.py

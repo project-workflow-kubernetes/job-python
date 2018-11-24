@@ -7,8 +7,8 @@ import settings as s
 import helpers as h
 
 
-INPUTS_FILES = {'train.csv': {}, 'test.csv': {}}
-OUTPUTS_FILES = {'clean_train.csv': {}, 'clean_test.csv': {}}
+INPUTS_FILES = {'train.csv': {}}
+OUTPUTS_FILES = {'clean_train.csv': {}}
 
 FILENAME = os.path.basename(os.path.abspath(__file__)).split('.')[0]
 
@@ -19,15 +19,14 @@ def clean(df):
     return out_df
 
 
-def task(train, test):
+def task(train):
     '''
     data dependencies: `train` and `test`
     data outputs: `clean_train` and `clean_test`
     '''
     clean_train = clean(train)
-    clean_test = clean(test)
 
-    return [clean_train, clean_test]
+    return [clean_train]
 
 
 if __name__ == '__main__':

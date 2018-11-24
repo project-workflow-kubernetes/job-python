@@ -100,10 +100,10 @@ train: split resources/X_train.csv resources/X_val.csv resources/y_train.csv res
 	python src/$(PROJECT_NAME)/train.py
 
 
-score-test: train resources/clean_test.csv resources/trained_model.pkl
+score-test: train resources/test.csv resources/trained_model.pkl
 	@echo "\n--- If the env $(PROJECT_NAME) doesn't exist, run 'make install' before ---\n"
 	bash -c "source activate $(PROJECT_NAME)"
-	@echo "\n--- Running main.py file ---\n"
+	@echo "\n--- Running score.py file ---\n"
 	python src/$(PROJECT_NAME)/score.py
 
 

@@ -1,5 +1,6 @@
 import os
 
+import pandas as pd
 from sklearn.model_selection import train_test_split
 
 import settings as s
@@ -7,17 +8,19 @@ import helpers as h
 
 
 INPUTS_FILES = {'clean_train.csv': {}}
-OUTPUTS_FILES = {'X_train.txt': {'delimiter': ','},
-                 'X_val.txt': {'delimiter': ','},
-                 'y_train.txt': {'delimiter': ','},
-                 'y_val.txt': {'delimiter': ','}}
+OUTPUTS_FILES = {'X_train.csv': {},
+                 'X_val.csv': {},
+                 'y_train.csv': {},
+                 'y_val.csv': {}}
 FILENAME = os.path.basename(os.path.abspath(__file__)).split('.')[0]
 
 
 def split(df):
     X, y = df.values[:, 1:], df.values[:, 0].reshape(len(df), 1)
 
-    return train_test_split(X, y, test_size=0.2, random_state=42)
+    splits = train_test_split(X, y, test_size=0.2, random_state=42)
+
+    return [pd.DataFrame(s) for s in splits]
 
 
 def task(clean_train):

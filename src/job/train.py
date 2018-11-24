@@ -7,10 +7,10 @@ from sklearn.neural_network import MLPClassifier
 import settings as s
 import helpers as h
 
-INPUTS_FILES = {'X_train.txt': {'delimiter': ',', 'dtype': np.float32},
-                'X_val.txt': {'delimiter': ',', 'dtype': np.float32},
-                'y_train.txt': {'delimiter': ',', 'dtype': np.float32},
-                'y_val.txt': {'delimiter': ',', 'dtype': np.float32}}
+INPUTS_FILES = {'X_train.csv': {},
+                'X_val.csv': {},
+                'y_train.csv': {},
+                'y_val.csv': {}}
 OUTPUTS_FILES = {'trained_model.pkl': {}}
 FILENAME = os.path.basename(os.path.abspath(__file__)).split('.')[0]
 

@@ -2,11 +2,11 @@ import os
 
 import pandas as pd
 
-from job import settings as s
-from job import helpers as h
+import settings as s
+import helpers as h
 
 
-INPUTS_FILES = {'trained_model.pkl': {}, 'clean_test.csv': {}}
+INPUTS_FILES = {'trained_model.pkl': {}, 'test.csv': {}}
 OUTPUTS_FILES = {'scored_test.csv': {}}
 FILENAME = os.path.basename(os.path.abspath(__file__)).split('.')[0]
 
@@ -14,7 +14,7 @@ FILENAME = os.path.basename(os.path.abspath(__file__)).split('.')[0]
 def task(trained_model, clean_test):
     '''
     data dependencies: `X_test`, `trained_model`
-    data outputs: `scores_test
+    data outputs: `scored_test`
     '''
     preds = pd.DataFrame(trained_model.predict(clean_test))
 
