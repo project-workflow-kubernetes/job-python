@@ -40,15 +40,6 @@ test: clean-pyc
 	bash -c "source activate $(PROJECT_NAME) &&  py.test --verbose --color=yes $(TEST_PATH)"
 
 
-test-in-docker:
-	@echo "\n--- Make sure that your docker-machine is up ---\n"
-	@echo "\n--- Building docker ---\n"
-	@docker build -t test-$(PROJECT_NAME) .
-	@echo "\n--- Running tests inside docker ---\n"
-	-@docker run test-$(PROJECT_NAME) py.test --verbose --color=yes
-	@docker rmi -f test-$(PROJECT_NAME)
-
-
 install: clean
 	-@conda env remove -yq -n $(PROJECT_NAME) # ignore if fails
 	@conda create -y --name $(PROJECT_NAME) --file conda.txt
