@@ -33,7 +33,6 @@ if __name__ == '__main__':
 
     try:
         s.logging.info('Starting {file}'.format(file=FILENAME))
-        
         inputs = h.read_inputs(s.INPUT_PREFIX, INPUTS_FILES)
         outputs = task(*inputs)
         h.save_outputs(s.OUTPUT_PREFIX, outputs, OUTPUTS_FILES, FILENAME)
