@@ -22,7 +22,6 @@ def task(X_train, X_val, y_train, y_val):
     '''
     clf = MLPClassifier(solver='adam', hidden_layer_sizes=350, alpha=1e-03)
     clf.fit(X_train, y_train)
-
     score = clf.score(X_val, y_val)
     s.logging.warning('Score {score}'.format(score=score))
 
@@ -33,7 +32,7 @@ if __name__ == '__main__':
 
     try:
         s.logging.info('Starting {file}'.format(file=FILENAME))
-
+        
         inputs = h.read_inputs(s.INPUT_PREFIX, INPUTS_FILES)
         outputs = task(*inputs)
         h.save_outputs(s.OUTPUT_PREFIX, outputs, OUTPUTS_FILES, FILENAME)

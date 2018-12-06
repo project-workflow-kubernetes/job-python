@@ -3,10 +3,6 @@
 [![Build Status](http://img.shields.io/travis/liabifano/ml-aws.svg?style=flat)](https://travis-ci.com/project-workflow-kubernetes/job-python)
 
 
-
-Dependencies to run the Makefile commands: `conda>=4.5.11, pylint>=2.1.1, docker>=18.06.1`
-
-
 ### To build image locally
 ```bash
 make install
