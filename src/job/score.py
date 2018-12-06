@@ -30,7 +30,6 @@ if __name__ == '__main__':
         inputs = h.read_inputs(s.INPUT_PREFIX, INPUTS_FILES)
         outputs = task(*inputs)
         h.save_outputs(s.OUTPUT_PREFIX, outputs, OUTPUTS_FILES, FILENAME)
-
     except Exception as e:
         s.logging.error(str(e))
         raise e
