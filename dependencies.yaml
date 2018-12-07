@@ -4,7 +4,7 @@ preprocessing.py:
   - train.csv
   outputs:
   - clean_train.csv
-  image: job:latest
+  image: liabifano/job
   command: python src/job/preprocessing.py
 split.py:
   inputs:
@@ -14,7 +14,7 @@ split.py:
   - y_train.csv
   - X_val.csv
   - y_val.csv
-  image: job:latest
+  image: liabifano/job
   command: python src/job/split.py
 train.py:
   inputs:
@@ -24,7 +24,7 @@ train.py:
   - y_val.csv
   outputs:
   - trained_model.pkl
-  image: job:latest
+  image: liabifano/job
   command: python src/job/train.py
 score.py:
   inputs:
@@ -32,5 +32,5 @@ score.py:
   - test.csv
   outputs:
   - scored_test.csv
-  image: job:latest
+  image: liabifano/job
   command: python src/job/score.py
