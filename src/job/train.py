@@ -20,6 +20,7 @@ def task(X_train, X_val, y_train, y_val):
     data dependencies: `X_train`, `X_val`, `y_train`, `y_val`
     data outputs: `trained_model`
     '''
+    
     clf = MLPClassifier(solver='adam', hidden_layer_sizes=350, alpha=1e-03)
     clf.fit(X_train, y_train)
     score = clf.score(X_val, y_val)
