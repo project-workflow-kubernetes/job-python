@@ -11,6 +11,7 @@ INPUTS_FILES = {'X_train.csv': {},
                 'X_val.csv': {},
                 'y_train.csv': {},
                 'y_val.csv': {}}
+
 OUTPUTS_FILES = {'trained_model.pkl': {}}
 
 
