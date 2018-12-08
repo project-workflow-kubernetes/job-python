@@ -13,8 +13,6 @@ INPUTS_FILES = {'X_train.csv': {},
                 'y_val.csv': {}}
 
 OUTPUTS_FILES = {'trained_model.pkl': {}}
-
-
 FILENAME = os.path.basename(os.path.abspath(__file__)).split('.')[0]
 
 
@@ -35,6 +33,7 @@ def task(X_train, X_val, y_train, y_val):
 if __name__ == '__main__':
 
     try:
+      
         s.logging.info('Starting {file}'.format(file=FILENAME))
         inputs = h.read_inputs(s.INPUT_PREFIX, INPUTS_FILES)
         outputs = task(*inputs)
