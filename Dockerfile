@@ -1,4 +1,4 @@
-FROM liabifano/executor:54ed6b0
+FROM liabifano/executor:bd0ce94
 
 COPY setup.py /job/
 COPY requirements.txt /job/
