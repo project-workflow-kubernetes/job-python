@@ -13,6 +13,11 @@ INPUTS_FILES = {'X_train.csv': {},
                 'y_val.csv': {}}
 
 OUTPUTS_FILES = {'trained_model.pkl': {}}
+
+
+
+
+
 FILENAME = os.path.basename(os.path.abspath(__file__)).split('.')[0]
 
 
